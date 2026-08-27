@@ -1,0 +1,6 @@
+{
+  "name": "Sobat Desmonth - Official Personal Branding Platform",
+  "description": "Portal Resmi Personal Branding Sobat Desmonth: Profil Kepemimpinan, Visi-Misi, Berita Kegiatan, Dokumentasi Galeri, Agenda Aksi Nyata, dan Form Aspirasi Warga.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
