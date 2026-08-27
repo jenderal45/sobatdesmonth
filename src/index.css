@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  h1, h2, h3, .font-serif-heading {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* 3D Perspective & Depth Foundations */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.perspective-1500 {
+  perspective: 1500px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Custom Blue and Sapphire Accents (Partai Demokrat & Executive Theme) */
+.blue-gradient-text, .gold-gradient-text {
+  background: linear-gradient(135deg, #E0F2FE 0%, #38BDF8 25%, #2563EB 65%, #60A5FA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue-gradient-bg, .gold-gradient-bg {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 60%, #1E40AF 100%);
+}
+
+.blue-border-glow, .gold-border-glow {
+  box-shadow: 0 0 25px -5px rgba(37, 99, 235, 0.45);
+}
+
+.shadow-3d-blue {
+  box-shadow: 
+    0 10px 25px -5px rgba(2, 6, 23, 0.9),
+    0 8px 16px -6px rgba(37, 99, 235, 0.3),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.shadow-3d-elevated {
+  box-shadow: 
+    0 20px 40px -15px rgba(0, 0, 0, 0.8),
+    0 0 30px 2px rgba(37, 99, 235, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.navy-card {
+  background: radial-gradient(120% 120% at 50% 10%, rgba(15, 29, 58, 0.82) 0%, rgba(8, 15, 32, 0.94) 100%);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.navy-card-hover {
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.navy-card-hover:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(56, 189, 248, 0.6);
+  box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.85), 0 0 30px 0 rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Holographic 3D Foil Sheen */
+.hologram-shimmer {
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(56, 189, 248, 0.12) 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(147, 51, 234, 0.12) 70%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  animation: hologramSweep 6s ease-in-out infinite;
+}
+
+@keyframes hologramSweep {
+  0% { background-position: -150% -150%; }
+  50% { background-position: 150% 150%; }
+  100% { background-position: -150% -150%; }
+}
+
+/* Tactile 3D Button Effects */
+.btn-3d-primary {
+  transition: all 0.15s ease;
+  box-shadow: 0 5px 0 #1e3a8a, 0 10px 20px rgba(37, 99, 235, 0.35);
+}
+.btn-3d-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #1e3a8a, 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e3a8a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
+
+
