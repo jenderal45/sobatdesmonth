@@ -4,8 +4,8 @@
 
   <h1>Built with AI Studio</h2>
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+  <p>The fastest path from prompt to production with oqline.</p>
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+  <a href="https://ai.oqline.com/apps">Start building</a>
 
 </div>
