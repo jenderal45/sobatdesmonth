@@ -32,7 +32,15 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
-    const ai = new GoogleGenAI({ apiKey });
+    const ai = new GoogleGenAI({
+      apiKey,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        }
+      }
+    });
+
     const systemPrompt = `
 Anda adalah 'Asisten Virtual Sobat Desmonth' — asisten resmi untuk figur pemimpin sosial & inisiator gerakan rakyat: Desmonth.
 Berikan jawaban yang hangat, santun, cerdas, berintegritas, optimis, dan terstruktur dalam Bahasa Indonesia.
@@ -50,17 +58,25 @@ Informasi Kunci:
 - Ajak warga untuk menyuarakan aspirasi melalui Formulir Aspirasi Warga di website ini untuk mendapatkan Kode Pelacakan (Tracking Code) transparan.
 `;
 
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: [
-        {
-          role: "user",
-          parts: [
-            { text: `${systemPrompt}\n\nPertanyaan Warga: "${message}"\nJawablah secara padat, jelas, ramah, dan inspiratif:` }
-          ]
-        }
-      ]
-    });
+    let response;
+    try {
+      response = await ai.models.generateContent({
+        model: "gemini-3.6-flash",
+        contents: `Pertanyaan Warga: "${message}"\nJawablah secara padat, jelas, ramah, dan inspiratif:`,
+        config: {
+          systemInstruction: systemPrompt,
+        },
+      });
+    } catch (modelErr: any) {
+      console.warn("Retrying with gemini-3.8-flash:", modelErr?.message || modelErr);
+      response = await ai.models.generateContent({
+        model: "gemini-3.8-flash",
+        contents: `Pertanyaan Warga: "${message}"\nJawablah secara padat, jelas, ramah, dan inspiratif:`,
+        config: {
+          systemInstruction: systemPrompt,
+        },
+      });
+    }
 
     const reply = response.text || "Terima kasih atas pertanyaan Anda kepada Sobat Desmonth. Mari kita bersama-sama mewujudkan aksi nyata untuk kemajuan masyarakat!";
     return res.json({ reply });

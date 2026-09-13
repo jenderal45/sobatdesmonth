@@ -1,3 +1,13 @@
+export interface OrganizationExperience {
+  id: number;
+  role: string;
+  organization: string;
+  period: string;
+  category: 'Ormas & Kepemudaan' | 'Paguyuban & Pasar' | 'Adat & Marga' | 'Partai & Politik' | 'Relawan Pemenangan' | 'Alumni & Pendidikan';
+  description: string;
+  highlight?: boolean;
+}
+
 export interface ProfileData {
   name: string;
   subtitle: string;
@@ -17,6 +27,7 @@ export interface ProfileData {
     organization: string;
     description: string;
   }[];
+  organizations?: OrganizationExperience[];
   values: {
     title: string;
     description: string;
@@ -56,7 +67,7 @@ export interface NewsItem {
   id: string;
   title: string;
   slug: string;
-  category: 'Aksi Sosial' | 'Pemberdayaan UMKM' | 'Dialog Warga' | 'Kunjungan Lapangan' | 'Pendidikan & Pemuda' | 'Kesehatan & Lansia' | 'Siaran Pers';
+  category: string;
   date: string;
   readTime: string;
   summary: string;
@@ -66,6 +77,24 @@ export interface NewsItem {
   author: string;
   tags: string[];
   featured?: boolean;
+  status?: 'Publik' | 'Draf';
+  viewsCount?: number;
+}
+
+export interface ActivityItem {
+  id: string;
+  title: string;
+  category: 'Pasar Modern & UMKM' | 'Sosial & Kemanusiaan' | 'Pemuda Pancasila & Ormas' | 'Keagamaan & Komunitas' | 'Dialog Warga & Blusukan' | 'Relawan & Pemenangan';
+  date: string;
+  location: string;
+  description: string;
+  impactMetric: string;
+  impactLabel: string;
+  image: string;
+  additionalImages?: string[];
+  roleTitle?: string;
+  tags: string[];
+  highlight?: boolean;
 }
 
 export interface GalleryItem {

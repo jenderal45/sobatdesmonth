@@ -137,12 +137,17 @@ export const AIChatModal: React.FC<AIChatModalProps> = ({ isOpen, onClose }) => 
         {/* Header */}
         <div className="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/80">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 text-white flex items-center justify-center shadow-md shadow-blue-600/30">
-              <Bot className="w-5 h-5" />
+            <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-amber-400/90 shadow-md shadow-blue-600/30 flex-shrink-0 bg-slate-900">
+              <img
+                src="/photos/logo_sobat_bang_desmonth.jpg"
+                alt="Logo Sobat Bang Desmonth"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-white">Tanya Sobat Desmonth</h3>
+                <h3 className="text-base font-bold text-white">Tanya Sobat Bang Desmonth</h3>
                 <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-semibold border border-emerald-500/30">
                   Online
                 </span>

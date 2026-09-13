@@ -1,15 +1,101 @@
-import { ProfileData, VisionMission, NewsItem, GalleryItem, AgendaItem, Aspiration, ContentPlanItem } from '../types';
+import { ProfileData, VisionMission, NewsItem, GalleryItem, AgendaItem, Aspiration, ContentPlanItem, OrganizationExperience, ActivityItem } from '../types';
+
+export const ORGANIZATION_EXPERIENCES: OrganizationExperience[] = [
+  {
+    id: 1,
+    role: "Ketua Umum",
+    organization: "Paguyuban Pasar Modern Bintaro",
+    period: "2014 - Sekarang",
+    category: "Paguyuban & Pasar",
+    description: "Memimpin paguyuban ratusan pedagang Pasar Modern Bintaro selama lebih dari 10 tahun, memperjuangkan tata kelola pasar modern yang higienis, advokasi legalitas tempat usaha, ketertiban sentra kuliner, serta program digitalisasi promosi dan permodalan mikro pedagang.",
+    highlight: true
+  },
+  {
+    id: 2,
+    role: "Ketua Bidang Sarana & Prasarana",
+    organization: "Pemuda Pancasila MPW Provinsi DKI Jakarta",
+    period: "Periode Kepengurusan",
+    category: "Ormas & Kepemudaan",
+    description: "Mengkoordinasikan pengelolaan fasilitas, logistik operasional, dan penyediaan armada bantuan penunjang berbagai aksi sosial, mitigasi bencana, serta kegiatan ormas di wilayah DKI Jakarta.",
+    highlight: true
+  },
+  {
+    id: 3,
+    role: "Wakil Bendahara",
+    organization: "Pemuda Pancasila MPW Provinsi DKI Jakarta",
+    period: "Periode Kepengurusan",
+    category: "Ormas & Kepemudaan",
+    description: "Mengawal transparansi pembukuan kas organisasi, tata kelola anggaran program kerja, serta akuntabilitas alokasi dana sosial kemasyarakatan tingkat provinsi.",
+    highlight: true
+  },
+  {
+    id: 4,
+    role: "Wakil Bendahara",
+    organization: "Pemuda Pancasila MPC Jakarta Selatan",
+    period: "Periode Kepengurusan",
+    category: "Ormas & Kepemudaan",
+    description: "Mengelola perbendaharaan dan penggalangan pendanaan kegiatan kemasyarakatan serta bakti pemuda di tingkat Majelis Pimpinan Cabang Jakarta Selatan."
+  },
+  {
+    id: 5,
+    role: "Bendahara DPC",
+    organization: "Partai Patriot DPC Jakarta Selatan",
+    period: "Periode Kepengurusan",
+    category: "Partai & Politik",
+    description: "Mengemban amanah manajemen perbendaharaan partai politik di tingkat cabang Jakarta Selatan, memastikan kelancaran operasional administrasi dan konsolidasi kader."
+  },
+  {
+    id: 6,
+    role: "Sekretaris Umum",
+    organization: "Pomp Op Raja Isori Parhusip Se-Jabodetabek",
+    period: "Periode Kepengurusan",
+    category: "Adat & Marga",
+    description: "Memimpin sekretariat organisasi kekerabatan marga Pomparan Ompu Raja Isori Parhusip se-wilayah Jabodetabek, mengkoordinasikan kegiatan adat, temu berkala, dan tali asih sosial warga perantauan."
+  },
+  {
+    id: 7,
+    role: "Bendahara Umum",
+    organization: "Pomparan Toga Parhusip Se-Jabodetabek",
+    period: "Periode Kepengurusan",
+    category: "Adat & Marga",
+    description: "Memegang amanah bendahara umum persatuan Pomparan Toga Parhusip se-Jabodetabek, mengelola dana abadi sosial, bantuan kedukaan, dan beasiswa anak keluarga marga."
+  },
+  {
+    id: 8,
+    role: "Ketua Ikatan Alumni",
+    organization: "Ikatan Alumni SMPK PSKD 4 Jakarta",
+    period: "Periode Kepengurusan",
+    category: "Alumni & Pendidikan",
+    description: "Menghimpun jejaring alumni lintas angkatan, menginisiasi program bakti almamater, pembinaan beasiswa bagi adik kelas, serta donor darah dan bakti sosial berkala."
+  },
+  {
+    id: 9,
+    role: "Bendahara Relawan Pemenangan",
+    organization: "Relawan Pemenangan Sandiaga Uno",
+    period: "Pilkada DKI Jakarta",
+    category: "Relawan Pemenangan",
+    description: "Mengelola akuntabilitas keuangan relawan, logistik pergerakan lapangan, dan transparansi dana pemenangan dalam kontestasi politik DKI Jakarta."
+  },
+  {
+    id: 10,
+    role: "Bendahara DKI Relawan Pemenangan",
+    organization: "Relawan Pemenangan Ganjar - Mahfud MD DKI Jakarta",
+    period: "Pilpres 2024",
+    category: "Relawan Pemenangan",
+    description: "Bertindak sebagai Bendahara tingkat provinsi DKI Jakarta dalam mengelola akuntabilitas dana kampanye relawan, konsolidasi simpul massa, dan logistik posko se-DKI Jakarta."
+  }
+];
 
 export const PROFILE_DATA: ProfileData = {
   name: "Bang Desmonth",
-  subtitle: "Kader Muda Partai Demokrat & Tokoh Penggerak Masyarakat Jakarta Selatan",
+  subtitle: "Ketua Umum Paguyuban Pasar Modern Bintaro & Kader Muda Partai Demokrat DKI Jakarta",
   tagline: "Mendengar dengan Hati, Mengabdi dengan Aksi Nyata",
   motto: "Kemajuan sejati lahir ketika suara rakyat menjadi kompas setiap kebijakan dan tindakan nyata di lapangan.",
   location: "Jakarta Selatan, DKI Jakarta",
   bio: [
-    "Bang Desmonth adalah figur penggerak sosial, kader muda Partai Demokrat DKI Jakarta, dan pejuang aspirasi publik yang berdedikasi mengadvokasi kesejahteraan masyarakat akar rumput di wilayah Jakarta Selatan.",
-    "Aktif dalam berbagai simpul kepemudaan dan keagamaan—termasuk Pemuda Pancasila DKI Jakarta dan komunitas jemaat HKBP Kebayoran Lama—beliau merangkul seluruh elemen masyarakat tanpa sekat untuk membangun solidaritas sosial yang tangguh.",
-    "Melalui gerakan 'Sobat Desmonth', beliau senantiasa hadir langsung menyapa warga di pasar tradisional, gang-gang pemukiman, dan warung kopi, menjembatani aspirasi warga dengan solusi kebijakan yang solutif, transparan, dan berdampak nyata bagi kesejahteraan Jakarta Selatan."
+    "Bang Desmonth adalah figur penggerak sosial, Ketua Umum Paguyuban Pasar Modern Bintaro (2014 sd sekarang), dan kader muda Partai Demokrat DKI Jakarta yang mendedikasikan energi kepemimpinannya untuk memperjuangkan kesejahteraan masyarakat akar rumput di Jakarta Selatan.",
+    "Memiliki rekam jejak pengabdian organisasi yang kokoh dan beragam: berpengalaman sebagai pengurus inti Pemuda Pancasila tingkat Provinsi DKI Jakarta dan MPC Jakarta Selatan, kepemimpinan perkumpulan adat Pomparan Parhusip Se-Jabodetabek, Ketua Ikatan Alumni SMPK PSKD 4 Jakarta, hingga memegang amanah Bendahara dalam tim relawan pemenangan tokoh nasional.",
+    "Melalui gerakan 'Sobat Desmonth', beliau senantiasa hadir langsung menyapa warga di pasar tradisional, gang pemukiman, sentra UMKM, dan komunitas keagamaan (termasuk jemaat HKBP Kebayoran Lama) guna menjembatani aspirasi publik dengan solusi kebijakan yang transparan dan berdampak nyata."
   ],
   education: [
     {
@@ -27,30 +113,31 @@ export const PROFILE_DATA: ProfileData = {
   ],
   experience: [
     {
+      year: "2014 - Sekarang",
+      role: "Ketua Umum Paguyuban",
+      organization: "Paguyuban Pasar Modern Bintaro",
+      description: "Memimpin paguyuban pedagang pasar selama lebih dari 10 tahun, memperjuangkan ketertiban sarana prasarana, advokasi lapak, serta penguatan daya saing UMKM lokal."
+    },
+    {
       year: "2023 - Sekarang",
-      role: "Kader & Fungsionaris Partai Demokrat",
+      role: "Kader & Fungsionaris",
       organization: "DPD Partai Demokrat DKI Jakarta",
-      description: "Aktif dalam konsolidasi pemenangan dan advokasi kebijakan publik pro-rakyat untuk wilayah Jakarta Selatan bersama jajaran pengurus partai dan Ketua Umum Agus Harimurti Yudhoyono (AHY)."
+      description: "Aktif dalam konsolidasi pemenangan dan advokasi kebijakan publik pro-rakyat untuk wilayah Jakarta Selatan bersama pimpinan partai dan Ketum AHY."
     },
     {
-      year: "2021 - Sekarang",
-      role: "Tokoh Penggerak & Pengurus",
-      organization: "Pemuda Pancasila DKI Jakarta",
-      description: "Mengkoordinasikan program sosial kemasyarakatan, tanggap darurat bencana, pengamanan kegiatan keagamaan, serta bakti sosial lintas wilayah di DKI Jakarta."
+      year: "Periode Kepengurusan",
+      role: "Ketua Bidang Sarana Prasarana & Wkl Bendahara",
+      organization: "Pemuda Pancasila MPW DKI Jakarta",
+      description: "Mengelola sarana logistik operasional organisasi serta tata kelola perbendaharaan dalam menjalankan misi sosial kemanusiaan se-DKI Jakarta."
     },
     {
-      year: "2020 - Sekarang",
-      role: "Inisiator & Pembina Utama",
-      organization: "Gerakan Solidaritas 'Sobat Desmonth'",
-      description: "Menggerakkan ribuan relawan dan simpatisan untuk turun langsung membagikan bantuan pangan, pendampingan UMKM warung, dan beasiswa pendidikan bagi keluarga prasejahtera."
-    },
-    {
-      year: "2020 - 2022",
-      role: "Koordinator Lapangan Aksi Tanggap Pandemi",
-      organization: "Bakti Kemanusiaan Bersama Kemensos RI & Komunitas Warga",
-      description: "Penyaluran ribuan paket sembako, masker, dan vitamin bagi warga terdampak pandemi di gang-gang pemukiman Jakarta Selatan."
+      year: "Periode Kepengurusan",
+      role: "Wakil Bendahara",
+      organization: "Pemuda Pancasila MPC Jakarta Selatan",
+      description: "Mengawal akuntabilitas keuangan dan penggalangan pendanaan kegiatan bakti sosial di wilayah Jakarta Selatan."
     }
   ],
+  organizations: ORGANIZATION_EXPERIENCES,
   values: [
     {
       title: "Integritas & Kejujuran",
@@ -92,24 +179,24 @@ export const PROFILE_DATA: ProfileData = {
   ],
   stats: [
     {
+      value: "10+",
+      label: "Amanah Organisasi",
+      detail: "Pengalaman kepemimpinan ormas, paguyuban pasar, adat, dan pemenangan"
+    },
+    {
+      value: "12 Tahun+",
+      label: "Pemberdayaan Pasar",
+      detail: "Ketua Umum Paguyuban Pasar Modern Bintaro sejak 2014"
+    },
+    {
       value: "150+",
-      label: "Aksi Nyata Sosial",
-      detail: "Blusukan pasar, baksos, bantuan sembako, & advokasi warga"
+      label: "Aksi Nyata Lapangan",
+      detail: "Blusukan pasar, baksos sembako, dan advokasi warga Jaksel"
     },
     {
       value: "45.000+",
       label: "Sobat & Relawan",
       detail: "Tergabung dalam barisan penggerak Sobat Desmonth Jaksel"
-    },
-    {
-      value: "100%",
-      label: "Komitmen Berintegritas",
-      detail: "Memperjuangkan aspirasi rakyat di parlemen daerah"
-    },
-    {
-      value: "98.4%",
-      label: "Respon Aspirasi",
-      detail: "Tercatat dan ditindaklanjuti tim advokasi lapangan"
     }
   ]
 };
@@ -277,6 +364,117 @@ export const NEWS_DATA: NewsItem[] = [
     location: "Jakarta Selatan",
     author: "Redaksi Warta Warga",
     tags: ["Aksi Sosial", "Kemensos RI", "Kemanusiaan", "Rekam Jejak"]
+  }
+];
+
+export const ACTIVITIES_DATA: ActivityItem[] = [
+  {
+    id: "act-1",
+    title: "Kepemimpinan Paguyuban Pasar Modern Bintaro & Tata Kelola UMKM Higienis",
+    category: "Pasar Modern & UMKM",
+    date: "2014 - Sekarang",
+    location: "Pasar Modern Bintaro",
+    roleTitle: "Ketua Umum Paguyuban Pasar Modern Bintaro",
+    description: "Memimpin paguyuban pedagang selama lebih dari 10 tahun, mengadvokasi perbaikan sarana prasarana pasar, zonasi lapak higienis, fasilitas perbankan dan transaksi digital QRIS, serta menjaga stabilitas harga dan kenyamanan ribuan pengunjung setia pasar.",
+    impactMetric: "450+ Pedagang & UMKM",
+    impactLabel: "Kios, lapak sayur, kuliner, dan kebutuhan pokok dalam binaan paguyuban",
+    image: "/photos/whatsapp_2026-08-18_15.15.42.jpeg",
+    tags: ["Pasar Modern Bintaro", "Ketua Umum", "UMKM", "Ekonomi Kerakyatan"],
+    highlight: true
+  },
+  {
+    id: "act-2",
+    title: "Aksi Sosial & Penguatan Logistik Bersama Pemuda Pancasila MPW DKI & MPC Jaksel",
+    category: "Pemuda Pancasila & Ormas",
+    date: "Rutin & Berkelanjutan",
+    location: "Jakarta Selatan & DKI Jakarta",
+    roleTitle: "Ketua Bidang Sarpras & Wkl Bendahara PP MPW DKI",
+    description: "Mengkoordinasikan sarana prasarana logistik dan transparansi perbendaharaan dalam berbagai kegiatan bakti sosial, donor darah, pengamanan kegiatan keagamaan, dan penanggulangan tanggap darurat bencana di wilayah DKI Jakarta.",
+    impactMetric: "1.200+ Paket Logistik",
+    impactLabel: "Disalurkan dalam program tanggap darurat dan bakti pemuda",
+    image: "/photos/whatsapp_2026-08-18_15.21.32.jpeg",
+    tags: ["Pemuda Pancasila", "MPW DKI Jakarta", "MPC Jaksel", "Bakti Sosial"],
+    highlight: true
+  },
+  {
+    id: "act-3",
+    title: "Silaturahmi Harmoni Sosial & Perayaan Ibadah Bersama Jemaat HKBP Kebayoran Lama",
+    category: "Keagamaan & Komunitas",
+    date: "Agustus 2026",
+    location: "Gereja HKBP Kebayoran Lama, Jaksel",
+    roleTitle: "Tokoh Masyarakat & Komunitas Keagamaan",
+    description: "Menghadiri ibadah syukur, temu sapa dengan pendeta dan jemaat, serta menyerahkan tali asih sosial bagi lansia dan pemuda gereja guna mempererat tali persaudaraan dan toleransi antarumat di Jakarta Selatan.",
+    impactMetric: "600+ Jemaat",
+    impactLabel: "Mengikuti dialog kebangsaan dan doa bersama untuk kedamaian Jakarta",
+    image: "/photos/whatsapp_2026-08-18_15.21.32_1.jpeg",
+    tags: ["HKBP Kebayoran Lama", "Toleransi", "Kepedulian", "Keagamaan"],
+    highlight: true
+  },
+  {
+    id: "act-4",
+    title: "Konsolidasi Akbar DPD Partai Demokrat DKI Jakarta: Gerak Cepat Kader Muda",
+    category: "Relawan & Pemenangan",
+    date: "Agustus 2026",
+    location: "Kantor DPD Partai Demokrat DKI Jakarta",
+    roleTitle: "Kader & Fungsionaris Partai Demokrat",
+    description: "Menyatukan gerak langkah bersama jajaran pimpinan partai dan Ketua Umum AHY, merumuskan peta jalan advokasi kesejahteraan rakyat dan pemenangan legislatif di dapil Jakarta Selatan.",
+    impactMetric: "10 Kecamatan",
+    impactLabel: "Simpul koordinator wilayah telah terbentuk dan aktif bergerak",
+    image: "/photos/whatsapp_2026-08-18_15.45.00_2.jpeg",
+    tags: ["Partai Demokrat", "AHY", "Kader Muda", "DPRD DKI Jakarta"],
+    highlight: true
+  },
+  {
+    id: "act-5",
+    title: "Musyawarah & Temu Kekerabatan Pomparan Raja Isori & Toga Parhusip Se-Jabodetabek",
+    category: "Keagamaan & Komunitas",
+    date: "Semester I 2026",
+    location: "Jakarta",
+    roleTitle: "Sekretaris Umum Pomp Op Raja Isori & Bendum Toga Parhusip",
+    description: "Memimpin jalannya temu kekerabatan marga se-Jabodetabek, mengelola kas abadi sosial keluarga, menyelenggarakan santunan duka cita, serta memperkuat solidaritas warga perantauan di ibu kota.",
+    impactMetric: "800+ Anggota Marga",
+    impactLabel: "Tergabung dalam paguyuban persaudaraan adat se-Jabodetabek",
+    image: "/photos/whatsapp_2026-08-18_16.02.26.jpeg",
+    tags: ["Marga Parhusip", "Adat Batak", "Solidaritas", "Jabodetabek"]
+  },
+  {
+    id: "act-6",
+    title: "Blusukan Menyapa Pedagang Tradisional & Luncurkan Gerakan Warung Berdaya",
+    category: "Dialog Warga & Blusukan",
+    date: "Juli - Agustus 2026",
+    location: "Pasar Tradisional Jakarta Selatan",
+    roleTitle: "Inisiator Sobat Desmonth",
+    description: "Turun langsung menyerap aspirasi pedagang kecil, memfasilitasi pendampingan modal usaha tanpa rente, serta menghubungkan pedagang dengan sistem pasokan pangan murah langsung dari petani.",
+    impactMetric: "150+ Warung Binaan",
+    impactLabel: "Menerima pelatihan promosi dan fasilitasi legalitas usaha",
+    image: "/photos/whatsapp_2026-08-18_15.15.42.jpeg",
+    tags: ["Blusukan Pasar", "Warung Berdaya", "Ekonomi Kerakyatan"]
+  },
+  {
+    id: "act-7",
+    title: "Penyaluran Sembako Kemanusiaan & Layanan Ambulans Siaga Gratis Bersama Relawan",
+    category: "Sosial & Kemanusiaan",
+    date: "Rutin Mingguan",
+    location: "Kebayoran Lama & Pasar Minggu",
+    roleTitle: "Pembina Relawan Kemanusiaan",
+    description: "Mengoperasikan armada ambulans siaga 24 jam gratis antar-jemput pasien sakit dan lansia ke RSUD, serta membagikan ribuan paket sembako murah di gang-gang pemukiman padat Jakarta Selatan.",
+    impactMetric: "2.500+ Paket Pangan",
+    impactLabel: "Serta 120+ rujukan medis darurat warga terlayani gratis",
+    image: "/photos/whatsapp_2026-08-18_16.58.34.jpeg",
+    tags: ["Bansos Sembako", "Ambulans Gratis", "Aksi Nyata"]
+  },
+  {
+    id: "act-8",
+    title: "Temu Akbar & Program Bakti Almamater Ikatan Alumni SMPK PSKD 4 Jakarta",
+    category: "Pemuda Pancasila & Ormas",
+    date: "Tahun 2025 - 2026",
+    location: "Jakarta",
+    roleTitle: "Ketua Ikatan Alumni SMPK PSKD 4 Jakarta",
+    description: "Menggalang solidaritas lintas generasi alumni, menyelenggarakan program beasiswa adik asuh bagi siswa berprestasi prasejahtera, dan donor darah tahunan.",
+    impactMetric: "150 Siswa Terbantu",
+    impactLabel: "Dukungan perlengkapan sekolah dan beasiswa pendidikan",
+    image: "/photos/whatsapp_2026-08-18_16.57.46.jpeg",
+    tags: ["PSKD 4", "Ikatan Alumni", "Pendidikan", "Kepemimpinan"]
   }
 ];
 

@@ -61,15 +61,20 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 1: Brand & Bio Summary */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 via-blue-700 to-indigo-900 flex items-center justify-center font-cinzel text-white font-black text-xl shadow-lg shadow-blue-600/30 border border-blue-400/40">
-                D
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-400/90 shadow-lg shadow-blue-600/30 flex-shrink-0 bg-slate-900">
+                <img
+                  src="/photos/logo_sobat_bang_desmonth.jpg"
+                  alt="Logo Sobat Bang Desmonth"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div>
                 <span className="font-cinzel text-lg font-bold tracking-wider text-white">
-                  SOBAT <span className="blue-gradient-text">DESMONTH</span>
+                  SOBAT <span className="blue-gradient-text">BANG DESMONTH</span>
                 </span>
-                <span className="text-[10px] tracking-widest uppercase text-slate-500 block font-semibold">
-                  Official Movement Portal
+                <span className="text-[10px] tracking-widest uppercase text-sky-400 block font-semibold">
+                  Portal Resmi Gerakan Rakyat
                 </span>
               </div>
             </div>
@@ -112,6 +117,7 @@ export const Footer: React.FC<FooterProps> = ({
               {[
                 { label: 'Profil & Rekam Jejak', href: 'profil' },
                 { label: 'Visi & 5 Panca Misi', href: 'visi-misi' },
+                { label: 'Kegiatan & Aksi Nyata', href: 'kegiatan' },
                 { label: 'Berita & Liputan Aksi', href: 'berita' },
                 { label: 'Dokumentasi Galeri', href: 'galeri' },
                 { label: 'Agenda & Jadwal', href: 'agenda' },

@@ -8,15 +8,35 @@ import {
   GraduationCap, 
   Briefcase, 
   Award, 
-  ChevronRight,
-  Quote,
-  CheckCircle2
+  ChevronRight, 
+  Quote, 
+  CheckCircle2,
+  Store,
+  Building2,
+  Flag,
+  UserCheck
 } from 'lucide-react';
-import { PROFILE_DATA } from '../data/mockData';
+import { PROFILE_DATA, ORGANIZATION_EXPERIENCES } from '../data/mockData';
 import { Card3D } from './Card3D';
 
 export const ProfileSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'pengalaman' | 'pendidikan' | 'penghargaan'>('pengalaman');
+  const [activeTab, setActiveTab] = useState<'organisasi' | 'pendidikan' | 'penghargaan'>('organisasi');
+  const [selectedOrgCategory, setSelectedOrgCategory] = useState<string>('Semua');
+
+  const orgCategories = [
+    'Semua',
+    'Paguyuban & Pasar',
+    'Ormas & Kepemudaan',
+    'Adat & Marga',
+    'Relawan Pemenangan',
+    'Partai & Politik',
+    'Alumni & Pendidikan'
+  ];
+
+  const filteredOrgs = ORGANIZATION_EXPERIENCES.filter(org => {
+    if (selectedOrgCategory === 'Semua') return true;
+    return org.category === selectedOrgCategory;
+  });
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -152,16 +172,16 @@ export const ProfileSection: React.FC = () => {
 
             <div className="flex items-center gap-2 bg-slate-950 p-1.5 rounded-2xl border border-slate-800 shadow-inner">
               <button
-                id="btn-tab-pengalaman"
-                onClick={() => setActiveTab('pengalaman')}
+                id="btn-tab-organisasi"
+                onClick={() => setActiveTab('organisasi')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  activeTab === 'pengalaman'
+                  activeTab === 'organisasi'
                     ? 'bg-blue-600 text-white shadow-md shadow-blue-600/40 border border-blue-400/40'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
                 <Briefcase className="w-3.5 h-3.5" />
-                <span>Pengalaman & Organisasi</span>
+                <span>Pengalaman Organisasi (10)</span>
               </button>
 
               <button
@@ -192,36 +212,95 @@ export const ProfileSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Tab Content: Pengalaman / Timeline */}
-          {activeTab === 'pengalaman' && (
+          {/* Tab Content: Pengalaman Organisasi (10 Amanah) */}
+          {activeTab === 'organisasi' && (
             <div className="space-y-6 animate-in fade-in duration-200">
-              <div className="relative border-l-2 border-blue-500/40 ml-4 pl-6 space-y-8">
-                {PROFILE_DATA.experience.map((exp, index) => (
-                  <motion.div 
-                    key={index} 
-                    initial={{ opacity: 0, x: -15 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.35, delay: index * 0.08 }}
-                    className="relative group"
+              {/* Highlight Banner: Pasar Modern Bintaro */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-950/90 via-slate-900 to-indigo-950/80 border border-blue-500/50 shadow-3d-blue flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-start gap-3.5">
+                  <div className="p-3 rounded-xl bg-blue-600 text-white shadow-md shadow-blue-600/40 flex-shrink-0">
+                    <Store className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold uppercase tracking-wider">
+                        Amanah Utama • Lebih dari 10 Tahun
+                      </span>
+                      <span className="text-xs font-mono text-sky-300">2014 - Sekarang</span>
+                    </div>
+                    <h4 className="text-base sm:text-lg font-bold text-white mt-1 font-cinzel">
+                      Ketua Umum Paguyuban Pasar Modern Bintaro
+                    </h4>
+                    <p className="text-xs text-slate-300 mt-1 max-w-2xl leading-relaxed font-light">
+                      Mendedikasikan kepemimpinan selama lebih dari 10 tahun membina ratusan pedagang pasar, mengawal tata kelola sentra UMKM, stabilisasi harga komoditas, dan permodalan mikro rakyat.
+                    </p>
+                  </div>
+                </div>
+                <span className="px-3 py-1.5 rounded-xl bg-blue-900/60 border border-blue-400/40 text-sky-200 text-xs font-bold whitespace-nowrap self-end md:self-center shadow-inner">
+                  10+ Tahun Menjabat
+                </span>
+              </div>
+
+              {/* Sub Categories Filter */}
+              <div className="flex flex-wrap gap-2 pt-2 pb-2">
+                {orgCategories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedOrgCategory(cat)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                      selectedOrgCategory === cat
+                        ? 'bg-blue-600 text-white font-bold shadow-3d-blue border border-blue-400/50'
+                        : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+                    }`}
                   >
-                    {/* Timeline Node */}
-                    <div className="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-slate-950 border-2 border-sky-400 group-hover:scale-125 transition-transform flex items-center justify-center shadow-md shadow-blue-500/40">
-                      <div className="w-1.5 h-1.5 rounded-full bg-sky-400"></div>
-                    </div>
-                    
-                    <div className="p-4 sm:p-5 rounded-2xl bg-slate-950/80 border border-blue-500/20 hover:border-blue-500/50 transition-all shadow-3d-blue">
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                        <span className="text-xs font-bold text-sky-400 px-3 py-0.5 rounded-md bg-blue-950/80 border border-blue-500/30 font-mono">
-                          {exp.year}
-                        </span>
-                        <span className="text-xs text-slate-400 font-medium">{exp.organization}</span>
+                    {cat}
+                  </button>
+                ))}
+              </div>
+
+              {/* 10 Organization Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                {filteredOrgs.map((org, index) => (
+                  <Card3D key={org.id} maxTilt={6} depth={12} glareOpacity={0.15}>
+                    <div className="p-5 rounded-2xl bg-slate-950/80 border border-blue-500/20 hover:border-blue-400/50 transition-all shadow-3d-blue h-full flex flex-col justify-between group">
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <span className="w-6 h-6 rounded-lg bg-blue-950 border border-blue-500/40 text-sky-400 text-xs font-bold font-mono flex items-center justify-center">
+                              {org.id}
+                            </span>
+                            <span className="text-[11px] font-semibold text-sky-400/90 px-2 py-0.5 rounded-md bg-slate-900 border border-slate-800">
+                              {org.category}
+                            </span>
+                          </div>
+                          <span className="text-[11px] font-mono text-slate-400">
+                            {org.period}
+                          </span>
+                        </div>
+
+                        <div>
+                          <span className="text-xs font-bold text-sky-300 uppercase tracking-wider block">
+                            {org.role}
+                          </span>
+                          <h4 className="text-base font-bold text-white group-hover:text-sky-300 transition-colors font-cinzel mt-0.5">
+                            {org.organization}
+                          </h4>
+                        </div>
+
+                        <p className="text-xs text-slate-300 leading-relaxed font-light">
+                          {org.description}
+                        </p>
                       </div>
-                      <h4 className="text-base font-bold text-white mt-1 font-cinzel">{exp.role}</h4>
-                      <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed font-light">
-                        {exp.description}
-                      </p>
+
+                      <div className="pt-3 mt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+                        <span className="flex items-center gap-1 text-emerald-400 font-medium">
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span>Terverifikasi</span>
+                        </span>
+                        <span className="text-slate-500 font-mono">ID #{org.id}</span>
+                      </div>
                     </div>
-                  </motion.div>
+                  </Card3D>
                 ))}
               </div>
             </div>

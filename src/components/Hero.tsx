@@ -61,12 +61,25 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Left Column: Headline, Bio Tagline & CTAs */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* 3D Verified Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-950/90 border border-blue-500/50 text-sky-300 text-xs font-bold shadow-3d-blue">
-              <Sparkles className="w-4 h-4 text-sky-400 animate-spin" style={{ animationDuration: '8s' }} />
-              <span>Gerakan Kolaborasi & Perubahan Nyata</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
-              <span className="text-white">Resmi</span>
+            {/* Official Logo & Verified Badge */}
+            <div className="inline-flex items-center gap-3 p-1.5 pr-4 rounded-full bg-slate-900/90 border border-amber-400/50 shadow-3d-blue backdrop-blur-md">
+              <div className="w-9 h-9 rounded-full overflow-hidden border border-amber-400/80 shadow-md flex-shrink-0 bg-slate-950">
+                <img
+                  src="/photos/logo_sobat_bang_desmonth.jpg"
+                  alt="Logo Sobat Bang Desmonth"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="flex items-center gap-2 text-left">
+                <span className="text-xs font-bold text-white tracking-wide">
+                  SOBAT BANG DESMONTH
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                <span className="text-[10px] uppercase font-bold text-amber-300 bg-amber-400/15 px-2 py-0.5 rounded-full border border-amber-400/30">
+                  Logo Resmi
+                </span>
+              </div>
             </div>
 
             {/* Main Executive Heading */}
@@ -193,6 +206,20 @@ export const Hero: React.FC<HeroProps> = ({
                       className="absolute top-3 right-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider shadow-lg border border-blue-300/40"
                     >
                       DKI JAKARTA
+                    </div>
+
+                    {/* Floating 3D Badge: Official Circular Logo Emblem (Layer +45px) */}
+                    <div 
+                      style={{ transform: 'translateZ(45px)' }}
+                      className="absolute top-12 right-3 w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-amber-400 shadow-2xl bg-slate-950/90 z-20 group hover:scale-110 transition-transform duration-300"
+                      title="Logo Resmi Sobat Bang Desmonth"
+                    >
+                      <img
+                        src="/photos/logo_sobat_bang_desmonth.jpg"
+                        alt="Logo Resmi Sobat Bang Desmonth"
+                        className="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
                     </div>
 
                     {/* Floating 3D Bottom Caption Nameplate (Layer +50px) */}

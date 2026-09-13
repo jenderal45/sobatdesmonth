@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { 
   Newspaper, 
@@ -13,31 +13,101 @@ import {
   Check, 
   Tag, 
   ExternalLink,
-  MessageCircle
+  MessageCircle,
+  Sliders,
+  Plus,
+  Sparkles,
+  ShieldCheck
 } from 'lucide-react';
 import { NEWS_DATA } from '../data/mockData';
 import { NewsItem } from '../types';
 import { Card3D } from './Card3D';
+import { NewsCMSModal } from './NewsCMSModal';
+
+const LOCAL_STORAGE_KEY = 'sobat_desmonth_cms_news';
 
 export const NewsSection: React.FC = () => {
+  const [newsList, setNewsList] = useState<NewsItem[]>(() => {
+    try {
+      const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch {
+      // Fallback
+    }
+    return NEWS_DATA;
+  });
+
+  const [isCmsOpen, setIsCmsOpen] = useState<boolean>(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeNewsModal, setActiveNewsModal] = useState<NewsItem | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
   const [savedNewsIds, setSavedNewsIds] = useState<string[]>([]);
 
-  const categories = ['Semua', 'Siaran Pers', 'Pemberdayaan UMKM', 'Aksi Sosial', 'Dialog Warga', 'Kesehatan & Lansia'];
+  // Sync with localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newsList));
+    } catch {
+      // ignore
+    }
+  }, [newsList]);
+
+  const categories = [
+    'Semua', 
+    'Pasar Modern & UMKM',
+    'Siaran Pers', 
+    'Pemberdayaan UMKM', 
+    'Aksi Sosial', 
+    'Dialog Warga', 
+    'Kesehatan & Lansia',
+    'Pemuda Pancasila & Ormas'
+  ];
+
+  const handleSaveNews = (news: NewsItem) => {
+    setNewsList(prev => {
+      const existsIndex = prev.findIndex(item => item.id === news.id);
+      if (existsIndex >= 0) {
+        const updated = [...prev];
+        updated[existsIndex] = news;
+        return updated;
+      }
+      return [news, ...prev];
+    });
+  };
+
+  const handleDeleteNews = (id: string) => {
+    setNewsList(prev => prev.filter(item => item.id !== id));
+  };
+
+  const handleResetNews = () => {
+    setNewsList(NEWS_DATA);
+    try {
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
+    } catch {
+      // ignore
+    }
+  };
 
   const filteredNews = useMemo(() => {
-    return NEWS_DATA.filter((item) => {
+    return newsList.filter((item) => {
+      // Only show published items in the main feed
+      if (item.status === 'Draf') return false;
+
       const matchCategory = selectedCategory === 'Semua' || item.category === selectedCategory;
       const matchSearch = 
         item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+        (item.location && item.location.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.tags && item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())));
       return matchCategory && matchSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [newsList, selectedCategory, searchQuery]);
 
   const toggleBookmark = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -88,17 +158,32 @@ export const NewsSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Search Box */}
-          <div className="relative w-full md:w-72">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <input
-              id="input-search-berita"
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Cari berita / topik kegiatan..."
-              className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-blue-500/30 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-blue-400 transition-colors shadow-inner"
-            />
+          {/* Controls: CMS Admin Button & Search Box */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
+            <button
+              id="btn-open-news-cms"
+              onClick={() => setIsCmsOpen(true)}
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-sky-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold shadow-3d-blue transition-all cursor-pointer flex items-center justify-center gap-2 border border-blue-400/40"
+            >
+              <Sliders className="w-3.5 h-3.5" />
+              <span>Kelola Berita (CMS)</span>
+              <span className="px-2 py-0.5 rounded-full bg-blue-950/80 text-[10px] text-sky-200 font-mono border border-blue-400/30">
+                {newsList.length} Berita
+              </span>
+            </button>
+
+            {/* Search Box */}
+            <div className="relative w-full sm:w-64">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                id="input-search-berita"
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Cari berita / topik kegiatan..."
+                className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-blue-500/30 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-blue-400 transition-colors shadow-inner"
+              />
+            </div>
           </div>
         </motion.div>
 
@@ -344,6 +429,20 @@ export const NewsSection: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* News CMS Admin Modal */}
+      <NewsCMSModal
+        isOpen={isCmsOpen}
+        onClose={() => setIsCmsOpen(false)}
+        newsList={newsList}
+        onSaveNews={handleSaveNews}
+        onDeleteNews={handleDeleteNews}
+        onResetNews={handleResetNews}
+        onPreviewNews={(item) => {
+          setIsCmsOpen(false);
+          setActiveNewsModal(item);
+        }}
+      />
 
     </section>
   );

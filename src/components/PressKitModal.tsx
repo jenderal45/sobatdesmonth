@@ -49,25 +49,42 @@ export const PressKitModal: React.FC<PressKitModalProps> = ({ isOpen, onClose })
     },
     {
       id: 'doc-logo-kit',
-      title: 'Logo Resmi & Identitas Visual Gerakan Sobat Desmonth',
+      title: 'Logo Resmi & Identitas Visual Sobat Bang Desmonth (High-Res 1024x1024)',
       category: 'Brand Guidelines',
-      format: 'Vector PNG & SVG (4.2 MB)',
-      description: 'Logo resmi, palet warna emas-navy, dan template spanduk aspirasi warga.',
-      icon: 'FileText'
+      format: 'JPEG High-Res & Badge (1.0 MB)',
+      description: 'Logo resmi emblem lingkaran emas Sobat Bang Desmonth, karakter karikatur, ornamen batik, Monas & siluet Jakarta.',
+      icon: 'Image',
+      isLogo: true,
+      assetUrl: '/photos/logo_sobat_bang_desmonth.jpg',
+      downloadFilename: 'Logo-Sobat-Bang-Desmonth-HighRes.jpg'
     }
   ];
 
-  const handleDownload = (id: string, title: string) => {
+  const handleDownload = (id: string, title: string, assetUrl?: string, downloadFilename?: string) => {
     setDownloadingId(id);
     
+    if (assetUrl) {
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = assetUrl;
+        link.download = downloadFilename || 'Logo-Sobat-Bang-Desmonth.jpg';
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setDownloadingId(null);
+      }, 500);
+      return;
+    }
+
     // Simulate generation & download of text summary or asset trigger
     setTimeout(() => {
       const element = document.createElement('a');
       const file = new Blob([
-        `SOBAT DESMONTH - OFFICIAL ASSET\n\nJudul: ${title}\nTanggal Rilis: Agustus 2026\nInisiator: Desmonth\nTagline: ${PROFILE_DATA.tagline}\nVisi: ${VISION_MISSION.grandVision}\n\nDokumen resmi ini diterbitkan oleh Tim Media & Kebijakan Sobat Desmonth.`
+        `SOBAT BANG DESMONTH - OFFICIAL ASSET\n\nJudul: ${title}\nTanggal Rilis: 2026\nInisiator: Bang Desmonth\nTagline: ${PROFILE_DATA.tagline}\nVisi: ${VISION_MISSION.grandVision}\n\nDokumen resmi ini diterbitkan oleh Tim Media & Kebijakan Sobat Bang Desmonth.`
       ], { type: 'text/plain' });
       element.href = URL.createObjectURL(file);
-      element.download = `${id}-sobat-desmonth.txt`;
+      element.download = `${id}-sobat-bang-desmonth.txt`;
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
@@ -112,26 +129,46 @@ export const PressKitModal: React.FC<PressKitModalProps> = ({ isOpen, onClose })
           {kitItems.map((item) => (
             <div 
               key={item.id}
-              className="p-4 rounded-xl bg-slate-950 border border-slate-800 hover:border-blue-500/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+              className={`p-4 rounded-xl bg-slate-950 border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+                item.isLogo ? 'border-amber-500/50 bg-gradient-to-r from-slate-950 via-slate-900 to-amber-950/20 shadow-md shadow-amber-500/10' : 'border-slate-800 hover:border-blue-500/40'
+              }`}
             >
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded bg-blue-500/10 text-sky-400 text-[10px] font-bold">
-                    {item.category}
-                  </span>
-                  <span className="text-[10px] text-slate-400">{item.format}</span>
+              <div className="flex items-start gap-3.5">
+                {item.isLogo && (
+                  <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-amber-400 shadow-md flex-shrink-0 bg-slate-900 mt-0.5">
+                    <img
+                      src={item.assetUrl}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                )}
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                      item.isLogo ? 'bg-amber-400/20 text-amber-300 border border-amber-400/40' : 'bg-blue-500/10 text-sky-400'
+                    }`}>
+                      {item.category}
+                    </span>
+                    <span className="text-[10px] text-slate-400">{item.format}</span>
+                  </div>
+                  <h4 className="text-sm font-bold text-white">{item.title}</h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">{item.description}</p>
                 </div>
-                <h4 className="text-sm font-bold text-white">{item.title}</h4>
-                <p className="text-xs text-slate-400 leading-relaxed">{item.description}</p>
               </div>
 
               <button
-                onClick={() => handleDownload(item.id, item.title)}
+                onClick={() => handleDownload(item.id, item.title, item.assetUrl, item.downloadFilename)}
                 disabled={downloadingId === item.id}
-                className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all flex-shrink-0 cursor-pointer disabled:opacity-50 shadow-md shadow-blue-600/30"
+                className={`px-4 py-2.5 rounded-xl text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all flex-shrink-0 cursor-pointer disabled:opacity-50 shadow-md ${
+                  item.isLogo 
+                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 shadow-amber-500/25 text-slate-950 font-extrabold'
+                    : 'bg-blue-600 hover:bg-blue-500 shadow-blue-600/30'
+                }`}
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>{downloadingId === item.id ? 'Mengunduh...' : 'Unduh'}</span>
+                <span>{downloadingId === item.id ? 'Mengunduh...' : item.isLogo ? 'Unduh Logo' : 'Unduh'}</span>
               </button>
             </div>
           ))}

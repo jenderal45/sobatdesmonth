@@ -3,7 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ProfileSection } from './components/ProfileSection';
 import { VisionMissionSection } from './components/VisionMissionSection';
-import { ContentPlanSection } from './components/ContentPlanSection';
+import { KegiatanSection } from './components/KegiatanSection';
 import { NewsSection } from './components/NewsSection';
 import { GallerySection } from './components/GallerySection';
 import { AgendaSection } from './components/AgendaSection';
@@ -50,8 +50,8 @@ export default function App() {
           onOpenPressKit={() => setIsPressKitModalOpen(true)}
         />
 
-        {/* 4. Kalender & Roadmap Content Plan 30 Hari */}
-        <ContentPlanSection />
+        {/* 4. Aksi Nyata & Kegiatan Bang Desmonth */}
+        <KegiatanSection />
 
         {/* 5. Berita Kegiatan Section */}
         <NewsSection />

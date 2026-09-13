@@ -36,7 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       }
 
       // Determine active section
-      const sections = ['beranda', 'profil', 'visi-misi', 'content-plan', 'berita', 'galeri', 'agenda', 'aspirasi'];
+      const sections = ['beranda', 'profil', 'visi-misi', 'kegiatan', 'berita', 'galeri', 'agenda', 'aspirasi'];
       const scrollPos = window.scrollY + 120;
       
       for (const section of sections) {
@@ -60,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { name: 'Beranda', href: '#beranda', id: 'beranda' },
     { name: 'Profil', href: '#profil', id: 'profil' },
     { name: 'Visi & Misi', href: '#visi-misi', id: 'visi-misi' },
-    { name: 'Content Plan 30 Hari', href: '#content-plan', id: 'content-plan' },
+    { name: 'Kegiatan', href: '#kegiatan', id: 'kegiatan' },
     { name: 'Berita', href: '#berita', id: 'berita' },
     { name: 'Galeri', href: '#galeri', id: 'galeri' },
     { name: 'Agenda', href: '#agenda', id: 'agenda' },
@@ -93,16 +93,21 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={(e) => { e.preventDefault(); handleNavClick('#beranda'); }}
             className="flex items-center gap-3 group cursor-pointer"
           >
-            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-800 flex items-center justify-center shadow-lg shadow-blue-500/30 border border-sky-400/40 group-hover:scale-105 transition-transform duration-300">
-              <span className="font-cinzel text-white font-black text-xl tracking-tighter">D</span>
-              <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-slate-950"></div>
+            <div className="relative w-11 h-11 rounded-full overflow-hidden shadow-lg shadow-blue-500/25 border-2 border-amber-400/90 group-hover:scale-105 group-hover:border-amber-300 transition-all duration-300 flex-shrink-0 bg-slate-900">
+              <img
+                src="/photos/logo_sobat_bang_desmonth.jpg"
+                alt="Logo Resmi Sobat Bang Desmonth"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-slate-950"></div>
             </div>
             <div className="flex flex-col">
               <span className="font-cinzel text-lg sm:text-xl font-bold tracking-wider text-white group-hover:text-sky-300 transition-colors">
-                SOBAT <span className="blue-gradient-text font-black">DESMONTH</span>
+                SOBAT <span className="blue-gradient-text font-black">BANG DESMONTH</span>
               </span>
               <span className="text-[10px] tracking-widest uppercase text-sky-400/80 font-bold -mt-1">
-                Official Movement Portal
+                Portal Resmi Gerakan Rakyat
               </span>
             </div>
           </a>
