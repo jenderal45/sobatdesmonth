@@ -108,6 +108,7 @@ export interface GalleryItem {
   location: string;
   caption: string;
   attendeesCount?: string;
+  externalUrl?: string;
 }
 
 export interface AgendaItem {

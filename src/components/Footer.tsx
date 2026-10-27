@@ -86,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({
             {/* Social Icons */}
             <div className="flex items-center gap-2 pt-2">
               {[
-                { icon: Instagram, label: 'Instagram', href: 'https://instagram.com' },
+                { icon: Instagram, label: 'Instagram @sobatbangdesmonth', href: 'https://www.instagram.com/sobatbangdesmonth?exln=MWgzdTcxa284dm45ag==' },
                 { icon: Youtube, label: 'YouTube', href: 'https://youtube.com' },
                 { icon: Twitter, label: 'Twitter / X', href: 'https://twitter.com' },
                 { icon: Facebook, label: 'Facebook', href: 'https://facebook.com' }
@@ -106,6 +106,32 @@ export const Footer: React.FC<FooterProps> = ({
                 );
               })}
             </div>
+
+            {/* Instagram Official Account Thumbnail Chip */}
+            <a
+              href="https://www.instagram.com/sobatbangdesmonth?exln=MWgzdTcxa284dm45ag=="
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-flex items-center gap-2.5 p-2 pr-3.5 rounded-xl bg-slate-900/90 border border-amber-400/30 hover:border-amber-400/70 transition-all group cursor-pointer"
+            >
+              <div className="w-8 h-8 rounded-full p-0.5 bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 flex-shrink-0">
+                <img
+                  src="/photos/logo_sobat_bang_desmonth.jpg"
+                  alt="Thumbnail Instagram @sobatbangdesmonth"
+                  className="w-full h-full object-cover rounded-full"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="text-left">
+                <div className="text-[11px] font-bold text-white group-hover:text-amber-300 transition-colors flex items-center gap-1">
+                  <span>@sobatbangdesmonth</span>
+                  <Instagram className="w-3 h-3 text-rose-400" />
+                </div>
+                <div className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">
+                  Ikuti Instagram Resmi
+                </div>
+              </div>
+            </a>
           </div>
 
           {/* Col 2: Navigation Links */}

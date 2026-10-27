@@ -12,7 +12,9 @@ import {
   ChevronRight, 
   Download, 
   Share2, 
-  Check 
+  Check,
+  Instagram,
+  ExternalLink
 } from 'lucide-react';
 import { GALLERY_DATA } from '../data/mockData';
 import { GalleryItem } from '../types';
@@ -138,8 +140,13 @@ export const GallerySection: React.FC = () => {
 
                   {/* Top Meta Badges */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-                    <span className="px-2.5 py-0.5 rounded-md bg-slate-950/85 backdrop-blur-md text-[10px] font-bold text-sky-300 border border-blue-500/40 shadow-sm">
-                      {item.category}
+                    <span className={`px-2.5 py-0.5 rounded-md backdrop-blur-md text-[10px] font-bold shadow-sm flex items-center gap-1 ${
+                      item.externalUrl 
+                        ? 'bg-gradient-to-r from-amber-500/90 via-rose-500/90 to-purple-600/90 text-white border border-amber-300/40' 
+                        : 'bg-slate-950/85 text-sky-300 border border-blue-500/40'
+                    }`}>
+                      {item.externalUrl && <Instagram className="w-3 h-3 text-amber-200" />}
+                      <span>{item.externalUrl ? 'Instagram Resmi' : item.category}</span>
                     </span>
 
                     <div className="w-8 h-8 rounded-full bg-slate-950/80 backdrop-blur-md flex items-center justify-center text-white border border-slate-700 group-hover:bg-blue-600 group-hover:text-white transition-colors shadow-md">
@@ -167,8 +174,17 @@ export const GallerySection: React.FC = () => {
 
                     {item.attendeesCount && (
                       <div className="flex items-center gap-1 text-[11px] font-semibold text-emerald-400">
-                        <Users className="w-3 h-3" />
-                        <span>{item.attendeesCount}</span>
+                        {item.externalUrl ? (
+                          <span className="inline-flex items-center gap-1 text-amber-300 font-mono">
+                            <Instagram className="w-3 h-3 text-rose-400" />
+                            {item.attendeesCount}
+                          </span>
+                        ) : (
+                          <>
+                            <Users className="w-3 h-3" />
+                            <span>{item.attendeesCount}</span>
+                          </>
+                        )}
                       </div>
                     )}
                   </div>
@@ -177,6 +193,75 @@ export const GallerySection: React.FC = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Official Instagram Account Thumbnail Banner Widget */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-12 p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950/70 border-2 border-amber-400/40 shadow-3d-blue relative overflow-hidden"
+        >
+          {/* Ambient glow decoration */}
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Left: Thumbnail & Account Identity */}
+            <div className="flex items-center gap-4 text-center md:text-left">
+              <a 
+                href="https://www.instagram.com/sobatbangdesmonth?exln=MWgzdTcxa284dm45ag==" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="relative group cursor-pointer flex-shrink-0"
+                title="Lihat Instagram Resmi Sobat Bang Desmonth"
+              >
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full p-[3px] bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 shadow-xl group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-slate-950 border-2 border-slate-900">
+                    <img
+                      src="/photos/logo_sobat_bang_desmonth.jpg"
+                      alt="Thumbnail Instagram @sobatbangdesmonth"
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+                <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-gradient-to-tr from-rose-500 to-amber-400 flex items-center justify-center text-white shadow-md border-2 border-slate-950">
+                  <Instagram className="w-3.5 h-3.5" />
+                </div>
+              </a>
+
+              <div className="space-y-1">
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                  <span className="font-mono text-sm sm:text-base font-bold text-white tracking-wide">
+                    @sobatbangdesmonth
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 text-[10px] font-bold uppercase tracking-wider">
+                    Instagram Resmi
+                  </span>
+                </div>
+                <h4 className="text-base sm:text-lg font-bold text-white font-cinzel">
+                  Dokumentasi & Aksi Nyata di Instagram
+                </h4>
+                <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
+                  Ikuti galeri interaktif, liputan live kegiatan blusukan pasar, reels perjuangan, serta video dokumentasi aksi kemanusiaan Bang Desmonth terkini secara real-time.
+                </p>
+              </div>
+            </div>
+
+            {/* Right: Action Button */}
+            <a
+              href="https://www.instagram.com/sobatbangdesmonth?exln=MWgzdTcxa284dm45ag=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-purple-600 via-rose-600 to-amber-500 hover:from-purple-500 hover:to-amber-400 text-white font-bold text-xs sm:text-sm flex items-center gap-2.5 shadow-lg shadow-rose-600/25 hover:shadow-rose-600/40 transition-all duration-300 hover:scale-105 flex-shrink-0 cursor-pointer"
+            >
+              <Instagram className="w-4 h-4" />
+              <span>Buka Instagram @sobatbangdesmonth</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </motion.div>
 
       </div>
 
@@ -244,6 +329,18 @@ export const GallerySection: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
+                  {activeItem.externalUrl && (
+                    <a
+                      href={activeItem.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-purple-600 via-rose-600 to-amber-500 hover:opacity-95 text-white text-xs font-bold flex items-center gap-1.5 shadow-md shadow-rose-600/30 transition-transform hover:scale-105 cursor-pointer"
+                    >
+                      <Instagram className="w-3.5 h-3.5" />
+                      <span>Buka di Instagram</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                   <button
                     onClick={handleShare}
                     className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer border border-slate-700 shadow-sm"

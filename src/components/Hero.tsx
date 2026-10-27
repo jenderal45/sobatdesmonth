@@ -13,7 +13,8 @@ import {
   HeartHandshake,
   Award,
   Flame,
-  Layers
+  Layers,
+  Instagram
 } from 'lucide-react';
 import { PROFILE_DATA } from '../data/mockData';
 import { Card3D } from './Card3D';
@@ -61,25 +62,41 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Left Column: Headline, Bio Tagline & CTAs */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* Official Logo & Verified Badge */}
-            <div className="inline-flex items-center gap-3 p-1.5 pr-4 rounded-full bg-slate-900/90 border border-amber-400/50 shadow-3d-blue backdrop-blur-md">
-              <div className="w-9 h-9 rounded-full overflow-hidden border border-amber-400/80 shadow-md flex-shrink-0 bg-slate-950">
-                <img
-                  src="/photos/logo_sobat_bang_desmonth.jpg"
-                  alt="Logo Sobat Bang Desmonth"
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
+            {/* Official Logo & Verified Badge with Instagram Link */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+              <div className="inline-flex items-center gap-3 p-1.5 pr-4 rounded-full bg-slate-900/90 border border-amber-400/50 shadow-3d-blue backdrop-blur-md">
+                <div className="w-9 h-9 rounded-full overflow-hidden border border-amber-400/80 shadow-md flex-shrink-0 bg-slate-950">
+                  <img
+                    src="/photos/logo_sobat_bang_desmonth.jpg"
+                    alt="Logo Sobat Bang Desmonth"
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="flex items-center gap-2 text-left">
+                  <span className="text-xs font-bold text-white tracking-wide">
+                    SOBAT BANG DESMONTH
+                  </span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                  <span className="text-[10px] uppercase font-bold text-amber-300 bg-amber-400/15 px-2 py-0.5 rounded-full border border-amber-400/30">
+                    Logo Resmi
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center gap-2 text-left">
-                <span className="text-xs font-bold text-white tracking-wide">
-                  SOBAT BANG DESMONTH
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-                <span className="text-[10px] uppercase font-bold text-amber-300 bg-amber-400/15 px-2 py-0.5 rounded-full border border-amber-400/30">
-                  Logo Resmi
-                </span>
-              </div>
+
+              {/* Official Instagram Thumbnail Chip */}
+              <a
+                href="https://www.instagram.com/sobatbangdesmonth?exln=MWgzdTcxa284dm45ag=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-pink-500/40 hover:border-pink-500 text-xs font-semibold text-slate-200 transition-all shadow-md group cursor-pointer"
+                title="Kunjungi Instagram Resmi @sobatbangdesmonth"
+              >
+                <div className="w-5 h-5 rounded-full p-0.5 bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+                  <Instagram className="w-3 h-3 text-white" />
+                </div>
+                <span className="text-[11px] font-mono group-hover:text-pink-300">@sobatbangdesmonth</span>
+              </a>
             </div>
 
             {/* Main Executive Heading */}
@@ -208,19 +225,25 @@ export const Hero: React.FC<HeroProps> = ({
                       DKI JAKARTA
                     </div>
 
-                    {/* Floating 3D Badge: Official Circular Logo Emblem (Layer +45px) */}
-                    <div 
+                    {/* Floating 3D Badge: Official Circular Logo Emblem (Layer +45px) - Clickable Instagram Link */}
+                    <a 
+                      href="https://www.instagram.com/sobatbangdesmonth?exln=MWgzdTcxa284dm45ag=="
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{ transform: 'translateZ(45px)' }}
-                      className="absolute top-12 right-3 w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-amber-400 shadow-2xl bg-slate-950/90 z-20 group hover:scale-110 transition-transform duration-300"
-                      title="Logo Resmi Sobat Bang Desmonth"
+                      className="absolute top-12 right-3 w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-amber-400 shadow-2xl bg-slate-950/90 z-20 group hover:scale-110 transition-transform duration-300 block cursor-pointer"
+                      title="Buka Instagram Resmi @sobatbangdesmonth"
                     >
                       <img
                         src="/photos/logo_sobat_bang_desmonth.jpg"
-                        alt="Logo Resmi Sobat Bang Desmonth"
+                        alt="Logo Resmi Sobat Bang Desmonth - Instagram @sobatbangdesmonth"
                         className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"
                       />
-                    </div>
+                      <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <Instagram className="w-5 h-5 text-amber-300 drop-shadow-md" />
+                      </div>
+                    </a>
 
                     {/* Floating 3D Bottom Caption Nameplate (Layer +50px) */}
                     <div 

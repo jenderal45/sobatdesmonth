@@ -574,6 +574,19 @@ export const GALLERY_DATA: GalleryItem[] = [
     location: "Balai Warga Jakarta Selatan",
     caption: "Suasana akrab dan guyub saat mendengarkan masukan warga terkait penataan lingkungan dan saluran air.",
     attendeesCount: "200+ Warga"
+  },
+  {
+    id: "gal-instagram",
+    title: "Dokumentasi & Story Harian Instagram @sobatbangdesmonth",
+    category: "Kunjungan & Blusukan",
+    type: "photo",
+    thumbnail: "/photos/logo_sobat_bang_desmonth.jpg",
+    mediaUrl: "/photos/logo_sobat_bang_desmonth.jpg",
+    date: "Update Harian",
+    location: "Instagram Resmi",
+    caption: "Kanal media sosial resmi gerakan Sobat Bang Desmonth. Simak live story, reels kegiatan blusukan pasar, advokasi warga, dan program aksi nyata secara berkala.",
+    attendeesCount: "@sobatbangdesmonth",
+    externalUrl: "https://www.instagram.com/sobatbangdesmonth?exln=MWgzdTcxa284dm45ag=="
   }
 ];
 
