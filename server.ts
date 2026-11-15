@@ -1,3 +1,4 @@
+import http from "http";
 import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
@@ -19,7 +20,7 @@ app.get("/api/health", (req, res) => {
 // Gemini AI Chat Proxy for "Tanya Sobat Desmonth"
 app.post("/api/chat", async (req, res) => {
   try {
-    const { message, history } = req.body;
+    const { message } = req.body;
     if (!message) {
       return res.status(400).json({ error: "Pesan tidak boleh kosong" });
     }
@@ -90,9 +91,15 @@ Informasi Kunci:
 });
 
 async function startServer() {
+  const httpServer = http.createServer(app);
+
   if (process.env.NODE_ENV !== "production") {
+    const isHmrDisabled = process.env.DISABLE_HMR === "true";
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        hmr: isHmrDisabled ? false : { server: httpServer },
+      },
       appType: "spa",
     });
     app.use(vite.middlewares);
@@ -104,9 +111,34 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
+  httpServer.on("error", (err: any) => {
+    if (err.code === "EADDRINUSE") {
+      console.error(`Port ${PORT} is already in use.`);
+    } else {
+      console.error("HTTP server error:", err);
+    }
+  });
+
+  httpServer.listen(PORT, "0.0.0.0", () => {
     console.log(`Server Sobat Desmonth running on http://localhost:${PORT}`);
+  });
+
+  process.on("SIGTERM", () => {
+    httpServer.close();
+    process.exit(0);
+  });
+
+  process.on("SIGINT", () => {
+    httpServer.close();
+    process.exit(0);
   });
 }
 
-startServer();
+process.on("unhandledRejection", (reason) => {
+  console.error("Unhandled Rejection:", reason);
+});
+
+startServer().catch((err) => {
+  console.error("Fatal startup error:", err);
+  process.exit(1);
+});

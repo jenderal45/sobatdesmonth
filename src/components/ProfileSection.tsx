@@ -170,43 +170,43 @@ export const ProfileSection: React.FC = () => {
               Rekam Jejak & Portofolio Pengabdian
             </h3>
 
-            <div className="flex items-center gap-2 bg-slate-950 p-1.5 rounded-2xl border border-slate-800 shadow-inner">
+            <div className="grid grid-cols-2 sm:flex sm:items-center gap-1.5 sm:gap-2 bg-slate-950 p-1.5 rounded-2xl border border-slate-800 shadow-inner w-full sm:w-auto">
               <button
                 id="btn-tab-organisasi"
                 onClick={() => setActiveTab('organisasi')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                className={`col-span-2 sm:col-span-1 flex items-center justify-center gap-2 px-3 sm:px-4 py-2.5 sm:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                   activeTab === 'organisasi'
                     ? 'bg-blue-600 text-white shadow-md shadow-blue-600/40 border border-blue-400/40'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                <Briefcase className="w-3.5 h-3.5" />
+                <Briefcase className="w-3.5 h-3.5 flex-shrink-0" />
                 <span>Pengalaman Organisasi (10)</span>
               </button>
 
               <button
                 id="btn-tab-pendidikan"
                 onClick={() => setActiveTab('pendidikan')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2.5 sm:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                   activeTab === 'pendidikan'
                     ? 'bg-blue-600 text-white shadow-md shadow-blue-600/40 border border-blue-400/40'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                <GraduationCap className="w-3.5 h-3.5" />
+                <GraduationCap className="w-3.5 h-3.5 flex-shrink-0" />
                 <span>Pendidikan</span>
               </button>
 
               <button
                 id="btn-tab-penghargaan"
                 onClick={() => setActiveTab('penghargaan')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2.5 sm:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                   activeTab === 'penghargaan'
                     ? 'bg-blue-600 text-white shadow-md shadow-blue-600/40 border border-blue-400/40'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                <Award className="w-3.5 h-3.5" />
+                <Award className="w-3.5 h-3.5 flex-shrink-0" />
                 <span>Penghargaan</span>
               </button>
             </div>

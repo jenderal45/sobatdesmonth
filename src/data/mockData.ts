@@ -587,6 +587,18 @@ export const GALLERY_DATA: GalleryItem[] = [
     caption: "Kanal media sosial resmi gerakan Sobat Bang Desmonth. Simak live story, reels kegiatan blusukan pasar, advokasi warga, dan program aksi nyata secara berkala.",
     attendeesCount: "@sobatbangdesmonth",
     externalUrl: "https://www.instagram.com/sobatbangdesmonth?exln=MWgzdTcxa284dm45ag=="
+  },
+  {
+    id: "gal-hatta-quote",
+    title: "Refleksi Kebangsaan: Pesan Mohammad Hatta — Sobat Bang Desmonth",
+    category: "Sarasehan & Dialog",
+    type: "photo",
+    thumbnail: "/assets/aistudio/IMG-20261115-WA0007_5b971e79.jpg",
+    mediaUrl: "/assets/aistudio/IMG-20261115-WA0007_5b971e79.jpg",
+    date: "November 2026",
+    location: "Jakarta Selatan",
+    caption: "\"Indonesia merdeka tidak ada gunanya. Jika rakyatnya tetap dimiskinkan oleh sistem yang korup dan serakah.\" — Mohammad Hatta. Desmonth Mulyo P. Parhusip, Dipl. Hot., SM bersama semangat perjuangan bersih untuk kesejahteraan rakyat.",
+    attendeesCount: "Desmonth Mulyo P. Parhusip"
   }
 ];
 
